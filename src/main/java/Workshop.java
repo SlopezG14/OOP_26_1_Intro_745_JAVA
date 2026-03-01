@@ -1,157 +1,117 @@
-//Objetos necesarios
 import java.util.List;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Random;
 import java.util.List;
+
 public class Workshop {
+
     public static void main(String[] args) {
 
     }
 
-    // Método que suma dos números enteros
     public int sumarDosNumeros(int a, int b) {
-        // TODO: Implementar el método para retornar la suma de dos números enteros.
-        // Ejemplo: Si a = 3 y b = 5, el resultado debería ser 8.
-        return a+b;
+        return a + b;
     }
 
-    // Método que encuentra el mayor de tres números enteros
     public int mayorDeTresNumeros(int a, int b, int c) {
         if (a >= b && a >= c) return a;
-    if (b >= c) return b;
-    return c;
+        if (b >= c) return b;
+        return c;
     }
 
-    // Método que retorna la tabla de multiplicar de un número
     public int[] tablaMultiplicar(int numero, int limite) {
-
-        // TODO: Implementar el método para retornar la tabla de multiplicar del número dado.
-        // Ejemplo: Si numero = 2 y limite = 5, el resultado debería ser [2, 4, 6, 8, 10].
-         int[] tabla = new int[limite];
-    for (int i = 0; i < limite; i++) {
-        tabla[i] = numero * (i + 1);
-    }
-    return tabla;
+        int[] tabla = new int[limite];
+        for (int i = 0; i < limite; i++) {
+            tabla[i] = numero * (i + 1);
+        }
+        return tabla;
     }
 
-    // Método que calcula el factorial de un número entero
     public int factorial(int n) {
-        // TODO: Implementar el método para calcular el factorial de un número entero.
-        // Ejemplo: Si n = 5, el resultado debería ser 120.
-        // Lanzar IllegalArgumentException si n es negativo.
-if (n < 0) {
+        if (n < 0) {
             throw new IllegalArgumentException("No se permite negativo");
         }
         int resultado = 1;
         for (int i = 1; i <= n; i++) {
-            resultado *= i; // Multiplica acumulativamente
+            resultado *= i;
         }
         return resultado;
-
     }
 
-    // Método que verifica si un número es primo
     public boolean esPrimo(int numero) {
-            if (n <= 1){
- return false;
-}
-    for (int i = 2; i <= Math.sqrt(n); i++) {
-        if (n % i == 0) return false; // Encuentra un divisor, no es primo
-    }
-    return true; // No encontró divisores, es primo
-
-
+        if (numero <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(numero); i++) {
+            if (numero % i == 0) return false;
+        }
+        return true;
     }
 
-    // Método que genera una serie de Fibonacci
     public int[] serieFibonacci(int n) {
-        // TODO: Implementar el método para generar la serie de Fibonacci hasta el número n.
-        // Ejemplo: Si n = 5, el resultado debería ser [0, 1, 1, 2, 3].
-        // Lanzar IllegalArgumentException si n es negativo.
- // Si es negativo, error
         if (n < 0)
             throw new IllegalArgumentException("No negativo");
 
-        // arreglo
         int[] serie = new int[n];
 
-        // Si hay1 espacio
         if (n > 0)
             serie[0] = 0;
-        // Si hay  2 espacios
+
         if (n > 1)
             serie[1] = 1;
-        
+
         for (int i = 2; i < n; i++) {
-            // Cada número es la suma de los dos anteriores
             serie[i] = serie[i - 1] + serie[i - 2];
         }
-               return serie;    }
 
-    // Método que suma todos los elementos de un arreglo
+        return serie;
+    }
+
     public int sumaElementos(int[] arreglo) {
-        // TODO: Implementar el método para sumar todos los elementos de un arreglo.
-        // Ejemplo: Si arreglo = [1, 2, 3, 4, 5], el resultado debería ser 15.
-        int suma = 0; // Variable acumuladora
-
-        // Recorremos cada número del arreglo
+        int suma = 0;
         for (int num : arreglo) {
-            suma += num; // Sumamos
+            suma += num;
         }
-
-        return suma; // Retornamos suma total
+        return suma;
     }
 
-    // Método que calcula el promedio de los elementos de un arreglo
     public double promedioElementos(int[] arreglo) {
-               return (double) sumaElementos(arreglo) / arreglo.length;
+        return (double) sumaElementos(arreglo) / arreglo.length;
     }
 
-    // Método que encuentra el elemento mayor en un arreglo
     public int encontrarElementoMayor(int[] arreglo) {
-        int mayor = arreglo[0]; // Asumimos que el primero es el mayor
-
+        int mayor = arreglo[0];
         for (int num : arreglo) {
             if (num > mayor)
-                mayor = num; // Actualizamos si encontramos uno mayor
+                mayor = num;
         }
-
         return mayor;
     }
 
-    // Método que encuentra el elemento menor en un arreglo
     public int encontrarElementoMenor(int[] arreglo) {
-      for (int num : arreglo) {
-            if (num == elemento)
-                return true; // Si lo encuentra
+        int menor = arreglo[0];
+        for (int num : arreglo) {
+            if (num < menor)
+                menor = num;
         }
-
-        return false; // Si no lo encuentra
+        return menor;
     }
 
-    // Método que busca un elemento en un arreglo
     public boolean buscarElemento(int[] arreglo, int elemento) {
-                 for (int num : arreglo) {
+        for (int num : arreglo) {
             if (num == elemento)
-                return true; // Si lo encuentra
+                return true;
         }
-
-        return false; // Si no lo encuentra
+        return false;
     }
 
-    // Método que invierte un arreglo
     public int[] invertirArreglo(int[] arreglo) {
-       
-          int[] invertido = new int[arreglo.length];
-
+        int[] invertido = new int[arreglo.length];
         for (int i = 0; i < arreglo.length; i++) {
-
-            // Copiamos desde el final hacia adelante
             invertido[i] = arreglo[arreglo.length - 1 - i];
         }
-
         return invertido;
     }
 

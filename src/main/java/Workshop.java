@@ -14,13 +14,11 @@ public class Workshop {
     public int sumarDosNumeros(int a, int b) {
         return a + b;
     }
-
     public int mayorDeTresNumeros(int a, int b, int c) {
         if (a >= b && a >= c) return a;
         if (b >= c) return b;
         return c;
     }
-
     public int[] tablaMultiplicar(int numero, int limite) {
         int[] tabla = new int[limite];
         for (int i = 0; i < limite; i++) {
@@ -39,7 +37,6 @@ public class Workshop {
         }
         return resultado;
     }
-
     public boolean esPrimo(int numero) {
         if (numero <= 1) {
             return false;
@@ -55,17 +52,13 @@ public class Workshop {
             throw new IllegalArgumentException("No negativo");
 
         int[] serie = new int[n];
-
         if (n > 0)
             serie[0] = 0;
-
         if (n > 1)
             serie[1] = 1;
-
         for (int i = 2; i < n; i++) {
             serie[i] = serie[i - 1] + serie[i - 2];
         }
-
         return serie;
     }
 
@@ -98,7 +91,6 @@ public class Workshop {
         }
         return menor;
     }
-
     public boolean buscarElemento(int[] arreglo, int elemento) {
         for (int num : arreglo) {
             if (num == elemento)
@@ -114,14 +106,12 @@ public class Workshop {
         }
         return invertido;
     }
-
     // Método que ordena un arreglo en orden ascendente
     public int[] ordenarArreglo(int[] arreglo) {
         // TODO: Implementar el método para ordenar un arreglo en orden ascendente.
         // Ejemplo: Si arreglo = [5, 4, 3, 2, 1], el resultado debería ser [1, 2, 3, 4, 5].
         return new int[0];
     }
-
     // Método que elimina los duplicados de un arreglo
     public int[] eliminarDuplicados(int[] arreglo) {
         // TODO: Implementar el método para eliminar los duplicados de un arreglo.
@@ -135,14 +125,10 @@ public class Workshop {
         // Ejemplo: Si arreglo1 = [1, 2, 3, 4, 5] y arreglo2 = [6, 7, 8], el resultado debería ser [1, 2, 3, 4, 5, 6, 7, 8].
         return new int[0];
     }
-
     // Método que rota un arreglo n posiciones
     public int[] rotarArreglo(int[] arreglo, int posiciones) {
-        // TODO: Implementar el método para rotar un arreglo n posiciones.
-        // Ejemplo: Si arreglo = [1, 2, 3, 4, 5] y posiciones = 2, el resultado debería ser [3, 4, 5, 1, 2].
-        return new int[0];
+                return new int[0];
     }
-
     // Método que cuenta los caracteres en una cadena
     public int contarCaracteres(String cadena) {
         // TODO: Implementar el método para contar el número de caracteres en una cadena.

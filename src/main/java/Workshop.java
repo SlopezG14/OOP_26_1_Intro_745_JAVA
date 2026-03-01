@@ -106,56 +106,77 @@ public class Workshop {
         }
         return invertido;
     }
-    // Método que ordena un arreglo en orden ascendente
     public int[] ordenarArreglo(int[] arreglo) {
-        // TODO: Implementar el método para ordenar un arreglo en orden ascendente.
-        // Ejemplo: Si arreglo = [5, 4, 3, 2, 1], el resultado debería ser [1, 2, 3, 4, 5].
-        return new int[0];
+    int[] copia = arreglo.clone();
+    for (int i = 0; i < copia.length - 1; i++) {
+        for (int j = 0; j < copia.length - 1 - i; j++) {
+            if (copia[j] > copia[j + 1]) {
+                int temp = copia[j];
+                copia[j] = copia[j + 1];
+                copia[j + 1] = temp;
+            }
+        }
     }
-    // Método que elimina los duplicados de un arreglo
-    public int[] eliminarDuplicados(int[] arreglo) {
-        // TODO: Implementar el método para eliminar los duplicados de un arreglo.
-        // Ejemplo: Si arreglo = [1, 2, 2, 3, 4, 4, 5], el resultado debería ser [1, 2, 3, 4, 5].
-        return new int[0];
-    }
+    return copia;
+}
 
-    // Método que combina dos arreglos en uno solo
-    public int[] combinarArreglos(int[] arreglo1, int[] arreglo2) {
-        // TODO: Implementar el método para combinar dos arreglos en uno solo.
-        // Ejemplo: Si arreglo1 = [1, 2, 3, 4, 5] y arreglo2 = [6, 7, 8], el resultado debería ser [1, 2, 3, 4, 5, 6, 7, 8].
-        return new int[0];
+public int[] eliminarDuplicados(int[] arreglo) {
+    java.util.Set<Integer> set = new java.util.LinkedHashSet<>();
+    for (int num : arreglo) {
+        set.add(num);
     }
-    // Método que rota un arreglo n posiciones
-    public int[] rotarArreglo(int[] arreglo, int posiciones) {
-                return new int[0];
+    int[] resultado = new int[set.size()];
+    int i = 0;
+    for (int num : set) {
+        resultado[i++] = num;
     }
-    // Método que cuenta los caracteres en una cadena
-    public int contarCaracteres(String cadena) {
-        // TODO: Implementar el método para contar el número de caracteres en una cadena.
-        // Ejemplo: Si cadena = "Hello", el resultado debería ser 5.
-        return 0;
-    }
+    return resultado;
+}
 
-    // Método que invierte una cadena
-    public String invertirCadena(String cadena) {
-        // TODO: Implementar el método para invertir una cadena.
-        // Ejemplo: Si cadena = "Hello", el resultado debería ser "olleH".
-        return "";
+public int[] combinarArreglos(int[] arreglo1, int[] arreglo2) {
+    int[] combinado = new int[arreglo1.length + arreglo2.length];
+    for (int i = 0; i < arreglo1.length; i++) {
+        combinado[i] = arreglo1[i];
     }
+    for (int i = 0; i < arreglo2.length; i++) {
+        combinado[arreglo1.length + i] = arreglo2[i];
+    }
+    return combinado;
+}
 
-    // Método que verifica si una cadena es un palíndromo
-    public boolean esPalindromo(String cadena) {
-        // TODO: Implementar el método para verificar si una cadena es un palíndromo.
-        // Ejemplo: Si cadena = "madam", el resultado debería ser true.
-        return false;
-    }
+public int[] rotarArreglo(int[] arreglo, int posiciones) {
+    int n = arreglo.length;
+    if (n == 0) return arreglo;
+    posiciones = posiciones % n;
+    if (posiciones < 0) posiciones += n;
 
-    // Método que cuenta el número de palabras en una cadena
-    public int contarPalabras(String cadena) {
-        // TODO: Implementar el método para contar el número de palabras en una cadena.
-        // Ejemplo: Si cadena = "Este es un test", el resultado debería ser 4.
-        return 0;
+    int[] rotado = new int[n];
+    for (int i = 0; i < n; i++) {
+        rotado[(i + posiciones) % n] = arreglo[i];
     }
+    return rotado;
+}
+
+public int contarCaracteres(String cadena) {
+    return cadena.length();
+}
+
+public String invertirCadena(String cadena) {
+    StringBuilder sb = new StringBuilder(cadena);
+    return sb.reverse().toString();
+}
+
+public boolean esPalindromo(String cadena) {
+    String limpia = cadena.replaceAll("\\s+", "").toLowerCase();
+    String invertida = new StringBuilder(limpia).reverse().toString();
+    return limpia.equals(invertida);
+}
+
+public int contarPalabras(String cadena) {
+    if (cadena == null || cadena.trim().isEmpty()) return 0;
+    String[] palabras = cadena.trim().split("\\s+");
+    return palabras.length;
+}
 
     // Método que convierte una cadena a mayúsculas
     public String convertirAMayusculas(String cadena) {

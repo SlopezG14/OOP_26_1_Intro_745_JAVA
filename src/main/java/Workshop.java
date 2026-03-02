@@ -178,107 +178,83 @@ public int contarPalabras(String cadena) {
     return palabras.length;
 }
 
-    // Método que convierte una cadena a mayúsculas
-    public String convertirAMayusculas(String cadena) {
-        // TODO: Implementar el método para convertir una cadena a mayúsculas.
-        // Ejemplo: Si cadena = "hello", el resultado debería ser "HELLO".
-        return "";
+     public String convertirAMayusculas(String cadena) {
+        return cadena == null ? "" : cadena.toUpperCase();
     }
 
-    // Método que convierte una cadena a minúsculas
     public String convertirAMinusculas(String cadena) {
-        // TODO: Implementar el método para convertir una cadena a minúsculas.
-        // Ejemplo: Si cadena = "HELLO", el resultado debería ser "hello".
-        return "";
+        return cadena == null ? "" : cadena.toLowerCase();
     }
 
-    // Método que reemplaza una subcadena en una cadena por otra subcadena
     public String reemplazarSubcadena(String cadena, String antiguaSubcadena, String nuevaSubcadena) {
-        // TODO: Implementar el método para reemplazar una subcadena en una cadena por otra subcadena.
-        // Ejemplo: Si cadena = "Hello Java", antiguaSubcadena = "Java", y nuevaSubcadena = "world", el resultado debería ser "Hello world".
-        return "";
+        return cadena == null ? "" : cadena.replace(antiguaSubcadena, nuevaSubcadena);
     }
 
-    // Método que busca una subcadena en una cadena y retorna su índice
     public int buscarSubcadena(String cadena, String subcadena) {
-        // TODO: Implementar el método para buscar una subcadena en una cadena y retornar su índice.
-        // Ejemplo: Si cadena = "Hello world" y subcadena = "world", el resultado debería ser 6.
-        return -1;
+        return cadena == null || subcadena == null ? -1 : cadena.indexOf(subcadena);
     }
 
-    // Método que valida un correo electrónico
     public boolean validarCorreoElectronico(String correo) {
-        // TODO: Implementar el método para validar un correo electrónico.
-        // Ejemplo: Si correo = "test@example.com", el resultado debería ser true.
-        return false;
+        return correo != null && correo.matches("^[A-Za-z0-9+_.-]+@(.+)$");
     }
-
-    // Método que calcula el promedio de una lista de números
 
     public double promedioLista(List<Integer> lista) {
-        // TODO: Implementar el método para calcular el promedio de una lista de números.
-        // Ejemplo: Si lista = [1, 2, 3, 4, 5], el resultado debería ser 3.0.
-        return 0.0;
+        if (lista == null || lista.isEmpty()) return 0.0;
+        return lista.stream().mapToInt(Integer::intValue).average().orElse(0.0);
     }
 
-    // Método que convierte un número en su representación binaria
     public String convertirABinario(int numero) {
-        // TODO: Implementar el método para convertir un número en su representación binaria.
-        // Ejemplo: Si numero = 10, el resultado debería ser "1010".
-        return "";
+        return Integer.toBinaryString(numero);
     }
 
-    // Método que convierte un número en su representación hexadecimal
     public String convertirAHexadecimal(int numero) {
-        // TODO: Implementar el método para convertir un número en su representación hexadecimal.
-        // Ejemplo: Si numero = 255, el resultado debería ser "FF".
-        return "";
+        return Integer.toHexString(numero).toUpperCase();
     }
 
-    // Método para el juego de piedra, papel, tijera, lagarto, Spock
     public String jugarPiedraPapelTijeraLagartoSpock(String eleccionUsuario) {
-        // TODO: Implementar el método para el juego de Piedra, Papel, Tijera, Lagarto, Spock.
-        // Las reglas del juego son:
-        // - Piedra vence a Tijera y Lagarto
-        // - Papel vence a Piedra y Spock
-        // - Tijera vence a Papel y Lagarto
-        // - Lagarto vence a Spock y Papel
-        // - Spock vence a Tijera y Piedra
+        String[] opciones = {"Piedra", "Papel", "Tijera", "Lagarto", "Spock"};
+        Random random = new Random();
+        String eleccionComputadora = opciones[random.nextInt(opciones.length)];
+        if (eleccionUsuario == null) return "Elección inválida";
 
+        eleccionUsuario = eleccionUsuario.substring(0,1).toUpperCase() 
+                          + eleccionUsuario.substring(1).toLowerCase();
 
-        // El método debe retornar un mensaje indicando el resultado del juego.
-        // Ejemplo: Si la eleccionUsuario es "Piedra", el resultado podría ser "Ganaste" o "Perdiste" dependiendo de la elección de la computadora.
-        return "";
-    }
+        if (eleccionUsuario.equals(eleccionComputadora)) return "Empate. Ambos eligieron " + eleccionUsuario;
 
-    public String pptls2(String game[]) {
-        //Retornar player ganador o empate
-            /*
-            Rock = R
-            Paper = P
-            Scissors = S
-            Lizard = L
-            Spock = V
-        Scissors cuts Paper
-Paper covers Rock
-Rock crushes Lizard
-Lizard poisons Spock
-Spock smashes Scissors
-Scissors decapitates Lizard
-Lizard eats Paper
-Paper disproves Spock
-Spock vaporizes Rock
-Rock crushes Scissors
-         */
-        return "";
+        boolean usuarioGana = switch (eleccionUsuario) {
+            case "Piedra" -> eleccionComputadora.equals("Tijera") || eleccionComputadora.equals("Lagarto");
+            case "Papel" -> eleccionComputadora.equals("Piedra") || eleccionComputadora.equals("Spock");
+            case "Tijera" -> eleccionComputadora.equals("Papel") || eleccionComputadora.equals("Lagarto");
+            case "Lagarto" -> eleccionComputadora.equals("Spock") || eleccionComputadora.equals("Papel");
+            case "Spock" -> eleccionComputadora.equals("Tijera") || eleccionComputadora.equals("Piedra");
+            default -> false;
+        };
+
+        return usuarioGana ? "Ganaste. La computadora eligió " + eleccionComputadora
+                            : "Perdiste. La computadora eligió " + eleccionComputadora;
     }
 
     public double areaCirculo(double radio) {
-        return 0.0;
+        return Math.PI * radio * radio;
     }
-
+//Signo zodiaca
     public String zoodiac(int day, int month) {
-        return "";
+        return switch (month) {
+            case 1 -> (day >= 20) ? "Acuario" : "Capricornio";
+            case 2 -> (day <= 18) ? "Acuario" : "Piscis";
+            case 3 -> (day >= 21) ? "Aries" : "Piscis";
+            case 4 -> (day <= 19) ? "Aries" : "Tauro";
+            case 5 -> (day <= 20) ? "Tauro" : "Géminis";
+            case 6 -> (day <= 20) ? "Géminis" : "Cáncer";
+            case 7 -> (day <= 22) ? "Cáncer" : "Leo";
+            case 8 -> (day <= 22) ? "Leo" : "Virgo";
+            case 9 -> (day <= 22) ? "Virgo" : "Libra";
+            case 10 -> (day <= 22) ? "Libra" : "Escorpio";
+            case 11 -> (day <= 21) ? "Escorpio" : "Sagitario";
+            case 12 -> (day <= 21) ? "Sagitario" : "Capricornio";
+            default -> "Fecha inválida";
+        };
     }
 
 
